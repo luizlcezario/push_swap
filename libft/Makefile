@@ -6,7 +6,7 @@
 #    By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/27 13:53:47 by llima-ce          #+#    #+#              #
-#    Updated: 2021/11/12 16:45:15 by llima-ce         ###   ########.fr        #
+#    Updated: 2022/01/13 20:10:19 by llima-ce         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ SRCS_BONUS =ft_lstnew.c			\
 
 SRCS_OTHERS =	get_next_line.c	\
 				ft_itoa_base.c	\
-				ft_strfstr.c	
+				ft_strfstr.c	\
+				ft_new_atoi.c
 
 
 

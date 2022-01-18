@@ -6,7 +6,7 @@
 /*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 23:03:35 by llima-ce          #+#    #+#             */
-/*   Updated: 2021/11/12 16:43:12 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:35:48 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -429,5 +429,14 @@ char	*ft_strfstr(const char *str, const char *ptr);
  * @return char* a adress with the number transformed 
  */
 char	*ft_itoa_base(size_t number, char *base);
+
+/**
+ * @brief transform a string in a number and leaading with errors of the string
+ * 
+ * @param str string 
+ * @param err number of errors 
+ * @return int number of the string
+ */
+int	ft_new_atoi(const char *str, int *err);
 
 #endif
