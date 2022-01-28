@@ -5,13 +5,32 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(gdb) Iniciar",
+			"name": "lldb",
+			"type": "lldb",
+			"request": "launch",
+			"program": "${workspaceRoot}/push_swap",
+			"args": [
+				"63","97","36","62","2","98","7","87","9","47","67","46","99","14","21","53","51","35","81","83","45","11","41","56","69","60","80","25","22","77","61","84","78","59","90","13","12","58","79","8","92","34","1","75","71","94","55","39","29","38"
+			],
+			"cwd": "${workspaceRoot}",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+				}
+			],
+			"miDebuggerPath": "/usr/bin/lldb",
+		},
+		{
+			"name": "gdb",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/push_swap",
-			"args": ["2", "3","5","6" ,"12","123","13","32"],
-			"stopAtEntry": true,
-			"cwd": "${workspaceFolder}",
+			"program": "${workspaceRoot}/push_swap",
+			"args": [
+				"63","97","36","62"," 2","98"," 7","87"," 9","47","67","46","99","14","21","53","51","35","81","83","45","11","41","56","69","60","80","25","22","77","61","84","78","59","90","13","12","58","79"," 8","92","34"," 1","75","71","94","55","39","29","38"
+			],
+			"stopAtEntry": false,
+			"cwd": "${workspaceRoot}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb",
@@ -19,9 +38,9 @@
 				{
 					"description": "Enable pretty-printing for gdb",
 					"text": "-enable-pretty-printing",
-					"ignoreFailures": true
 				}
-			]
+			],
+			"miDebuggerPath": "/usr/bin/gdb"
 		}
 	]
 }

@@ -6,7 +6,7 @@
 /*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:13:07 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/14 20:51:46 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/01/18 16:03:14 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	verify_duplicates(t_push *stack, int argc)
 	int		i;
 
 	i = -1;
-	quickSort(stack->original, 0, argc - 1);
+	quickSort(stack->original, 0, argc - 2);
 	while (++i < argc - 1)
 	{
 		if (interpolationSearch(stack->original, i + 1, argc - 1,

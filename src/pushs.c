@@ -6,63 +6,93 @@
 /*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:07:06 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/14 19:17:06 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:40:45 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_push *stack)
+void	empty_stack(t_push *stack, t_stack *tmp)
 {
-	t_stack *tmp;
+	if (tmp == stack->A)
+	{
+		stack->A = NULL;
+		stack->B->previous->next = tmp;
+		tmp->previous = stack->B->previous;
+		stack->B->previous = tmp;
+		tmp->next = stack->B;
+		stack->B->is_top = FALSE;
+		stack->B = tmp;
+	}
+	else
+	{
+		stack->B = NULL;
+		stack->A->previous->next = tmp;
+		tmp->previous = stack->A->previous;
+		stack->A->previous = tmp;
+		tmp->next = stack->A;
+		stack->A->is_top = FALSE;
+		stack->A = tmp;
+	}
+}
 
-	tmp = stack->B;
-	stack->B->next->previus = stack->B->previus;
-	stack->B->previus->next = stack->B->next;
+void	push_a(t_push *stack, t_stack *tmp)
+{
+	stack->count_element_A += 1;
+	stack->count_element_B -= 1;
+	ft_printf("pa\n");
+	if (stack->A == stack->A->next)
+		return (empty_stack(stack, tmp));
+	stack->B->next->previous = stack->B->previous;
+	stack->B->previous->next = stack->B->next;
 	stack->B = tmp->next;
 	stack->B->is_top = TRUE;
 	if (stack->A == NULL)
 	{
 		stack->A = tmp;
 		tmp->next = stack->A;
-		tmp->previus = stack->A;
+		tmp->previous = stack->A;
+		tmp->is_top = TRUE;
 	}
 	else
 	{
 		tmp->next = stack->A;
-		tmp->previus = stack->A->previus;
-		stack->A->previus->next = tmp;
-		stack->A->previus = tmp;
+		tmp->previous = stack->A->previous;
+		stack->A->previous->next = tmp;
+		stack->A->previous = tmp;
 		stack->A->is_top = FALSE;
 		stack->A = tmp;
 	}
-	ft_printf("pa\n");
+	stack->count_element_A += 1;
+	stack->count_element_B -= 1;
 }
 
-void	push_b(t_push *stack)
+void	push_b(t_push *stack, t_stack *tmp)
 {
-	t_stack *tmp;
-
-	tmp = stack->A;
-	stack->A->next->previus = stack->A->previus;
-	stack->A->previus->next = stack->A->next;
-	stack->A = tmp->next;
+	stack->count_element_A -= 1;
+	stack->count_element_B += 1;
+	ft_printf("pb\n");
+	if (stack->A == stack->A->next)
+		return (empty_stack(stack, tmp));
+	stack->A->next->previous = stack->A->previous;
+	stack->A->previous->next = stack->A->next;
+	stack->A = stack->A->next;
 	stack->A->is_top = TRUE;
 	if (stack->B == NULL)
 	{
 		stack->B = tmp;
 		tmp->next = stack->B;
-		tmp->previus = stack->B;
+		tmp->previous = stack->B;
+		tmp->is_top = TRUE;
 	}
 	else
 	{
+		stack->B->previous->next = tmp;
+		tmp->previous = stack->B->previous;
+		stack->B->previous = tmp;
 		tmp->next = stack->B;
-		tmp->previus = stack->B->previus;
-		stack->B->previus->next = tmp;
-		stack->B->previus = tmp;
 		stack->B->is_top = FALSE;
 		stack->B = tmp;
 	}
-	ft_printf("pb\n");
 }
 
