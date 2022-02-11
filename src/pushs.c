@@ -6,7 +6,7 @@
 /*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:07:06 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/27 17:40:45 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:27:44 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	push_a(t_push *stack, t_stack *tmp)
 	stack->count_element_A += 1;
 	stack->count_element_B -= 1;
 	ft_printf("pa\n");
-	if (stack->A == stack->A->next)
+	if (stack->B == stack->B->next)
 		return (empty_stack(stack, tmp));
 	stack->B->next->previous = stack->B->previous;
 	stack->B->previous->next = stack->B->next;
-	stack->B = tmp->next;
+	stack->B = stack->B->next;
 	stack->B->is_top = TRUE;
 	if (stack->A == NULL)
 	{
@@ -56,15 +56,13 @@ void	push_a(t_push *stack, t_stack *tmp)
 	}
 	else
 	{
-		tmp->next = stack->A;
-		tmp->previous = stack->A->previous;
 		stack->A->previous->next = tmp;
+		tmp->previous = stack->A->previous;
 		stack->A->previous = tmp;
+		tmp->next = stack->A;
 		stack->A->is_top = FALSE;
 		stack->A = tmp;
 	}
-	stack->count_element_A += 1;
-	stack->count_element_B -= 1;
 }
 
 void	push_b(t_push *stack, t_stack *tmp)

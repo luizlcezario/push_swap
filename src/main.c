@@ -6,7 +6,7 @@
 /*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/26 13:59:15 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:03:24 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int	main(int argc, char **argv)
 		if (init_stacks(&stack, argc, argv) != 0)
 			return (error_message("Error: invalid input"));
 		push_swap(&stack);
-		//finishing_swap(&stack);
+		// print_linked_list(stack.B);
+		finishing_swap(&stack);
 		print_linked_list(stack.A);
-		print_linked_list(stack.B);
+		// print_linked_list(stack.B);
 		return (0);
 	}
 	else

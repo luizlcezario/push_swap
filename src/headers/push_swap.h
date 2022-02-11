@@ -6,7 +6,7 @@
 /*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:11:12 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/27 17:40:45 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/02/11 16:17:09 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ int		add_in_end_element(t_push *stack, t_stack *new, int i);
 void	quickSort(int arr[], int low, int high);
 int		verify_duplicates(t_push *stack, int argc);
 void	split_chunk(t_push *stack);
-void	init_nums(t_push *stack);
-int		find_small_b(t_push *stack, t_stack *tmp);
-void	finishing_swap(t_push *stack);
+void	init_nums(t_push *stack, t_stack *moving);
+int		finishing_swap(t_push *stack);
 void	move(int moves, t_push *stack, void (*r)(t_push *),
 	void (*rr)(t_push *));
+	
+int		find_small(t_stack *tmp, int value);
+int		find_greater(t_stack *tmp, int value);
 
 void	push_b(t_push *stack, t_stack *tmp);
 void	push_a(t_push *stack, t_stack *tmp);

@@ -6,7 +6,7 @@
 /*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:28:28 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/27 18:10:41 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/02/11 16:33:16 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,26 +73,23 @@ int	verify_entry_in_b(t_nums num, t_push *stack, t_stack *B_next, int limiter)
 	{
 		while (++a < stack->count_element_B)
 		{
-			if (num.value > B_next->previous->num && stack->B->num <
-				B_next->next->num)
+			if (num.value < B_next->num && num.value > B_next->next->num)
 			{
-				if (num.value - B_next->previous->num < limiter)
+				if (num.value - B_next->previous->num <= limiter)
 					return (a);
-				else if (B_next->next->num - num.value < limiter)
+				else if (B_next->next->num - num.value <= limiter)
 					return (a);
 			}
 			B_next = B_next->next;
 		}
 		if (limiter <= 10)
-			verify_entry_in_b(num, stack, B_next, limiter + 1);
+			return(verify_entry_in_b(num, stack, B_next, limiter + 1));
 		else if (limiter <= 60)
-			verify_entry_in_b(num, stack, B_next, limiter + 5);
-		return (find_small_b(stack, stack->B->next));
+			return(verify_entry_in_b(num, stack, B_next, limiter + 5));
+		return (find_small(stack->B->next, num.value));
 	}
 	return (0);
 }
-
-
 
 void	move_together(t_push *stack,int moves_a, int moves_b, t_bool together)
 {
@@ -130,13 +127,13 @@ int	push_swap(t_push *stack)
 
 	if (stack->A == NULL)
 		return (0);
-	print_linked_list(stack->B);
+	// print_linked_list(stack->B);
 	tmp = stack->A;
-	init_nums(stack);
+	init_nums(stack, stack->A);
 	if (stack->count_element_A > 0)
 	{
 		moves_a = verify_minor_in_chunk(tmp->next, tmp->previous, stack, 0);
-		moves_b = verify_entry_in_b(moves_a,stack, stack->B, 1);
+		moves_b = verify_entry_in_b(moves_a, stack, stack->B, 1);
 		together_moves = verify_moves_to_push(moves_a.position, moves_b, stack);
 		move_together(stack, moves_a.position, moves_b, together_moves);
 		push_b(stack, stack->A);
