@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:11:12 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/02/11 16:17:09 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:54:13 by luiz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,24 @@ typedef struct s_stack{
 	struct s_stack	*previous;
 }		t_stack;
 
+typedef struct s_chunk{
+	t_stack *initial;
+	int	max;
+	int size;
+}	t_chunck;
+
 typedef struct s_push{
 	int		err;
 	int		*original;
 	t_stack	*A;
 	t_stack	*B;
+	t_nums minor_now;
 	int		count_element_A;
 	int		count_element_B;
-	t_nums	minor_end;
-	t_nums	minor_start;
+	int		pivot;
 }	t_push;
 
-int		push_swap(t_push *stack);
+int	push_swap(t_push *stack, int size, t_stack *now);
 
 int		init_stacks(t_push *stack, int argc, char **argv);
 int		print_linked_list(t_stack *stack);
@@ -55,13 +61,16 @@ int		add_in_end_element(t_push *stack, t_stack *new, int i);
 void	quickSort(int arr[], int low, int high);
 int		verify_duplicates(t_push *stack, int argc);
 void	split_chunk(t_push *stack);
-void	init_nums(t_push *stack, t_stack *moving);
-int		finishing_swap(t_push *stack);
+int		finishing_swap(t_push *stack,t_stack *order, int low, int high);
 void	move(int moves, t_push *stack, void (*r)(t_push *),
 	void (*rr)(t_push *));
 	
 int		find_small(t_stack *tmp, int value);
 int		find_greater(t_stack *tmp, int value);
+
+
+// new
+int	find_pivot(t_stack *stack , int size);
 
 void	push_b(t_push *stack, t_stack *tmp);
 void	push_a(t_push *stack, t_stack *tmp);

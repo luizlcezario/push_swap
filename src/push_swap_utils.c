@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:25:41 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/02/11 16:26:26 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:35:28 by luiz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ int	print_linked_list(t_stack *stack)
 	return(i);
 }
 
-void	init_nums(t_push *stack, t_stack *moving)
-{
-	stack->minor_end.position = 0;
-	stack->minor_start.position = 0;
-	stack->minor_start.value = moving->num;
-	stack->minor_end.value = moving->num;
-}
 
 int	find_small(t_stack *tmp, int value)
 {
@@ -97,4 +90,20 @@ void	move(int moves, t_push *stack, void (*r)(t_push *),void (*rr)(t_push *))
 				moves--;
 			}
 		}
+}
+
+int	find_pivot(t_stack *stack, int size)
+{
+	int	*tmp;
+	int	a;
+
+	tmp = malloc(size * sizeof(int));
+	a = -1;
+	while (++a < size)
+	{
+		tmp[a] = stack->num;
+		stack = stack->next;
+	}
+	quickSort(tmp, 0, size);
+	return (tmp[size / 2]);
 }

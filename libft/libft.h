@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 23:03:35 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/13 19:35:48 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:55:00 by luiz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -437,6 +437,6 @@ char	*ft_itoa_base(size_t number, char *base);
  * @param err number of errors 
  * @return int number of the string
  */
-int	ft_new_atoi(const char *str, int *err);
+int		ft_new_atoi(const char *str, int *err);
 
 #endif

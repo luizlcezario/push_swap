@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_new_atoi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:33:10 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/14 14:36:53 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:56:54 by luiz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 static int	atoi_while(const char *str, int sign, int *num)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (str[i] >= '0' && str[i] <= '9') 
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-
 		if (*num > INT_MAX / 10
-			|| (*num == INT_MAX / 10 
-			&& str[i] - '0' > 7)) 
+			|| (*num == INT_MAX / 10
+				&& str[i] - '0' > 7))
 		{
 			if (sign == 1)
-			{
-
 				return (i);
-			}
 			else
 				return (INT_MIN);
 		}
@@ -43,7 +39,7 @@ int	ft_new_atoi(const char *str, int *err)
 	int	num;
 
 	sign = 1;
-	if(!str)
+	if (!str)
 	{
 		*err = 1;
 		printf("teste4: %d\n", *err);

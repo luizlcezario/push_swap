@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:07:06 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/02/11 15:27:44 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:14:21 by luiz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void	empty_stack(t_push *stack, t_stack *tmp)
 
 void	push_a(t_push *stack, t_stack *tmp)
 {
-	stack->count_element_A += 1;
-	stack->count_element_B -= 1;
-	ft_printf("pa\n");
 	if (stack->B == stack->B->next)
 		return (empty_stack(stack, tmp));
 	stack->B->next->previous = stack->B->previous;
@@ -63,13 +60,13 @@ void	push_a(t_push *stack, t_stack *tmp)
 		stack->A->is_top = FALSE;
 		stack->A = tmp;
 	}
+	stack->count_element_A += 1;
+	stack->count_element_B -= 1;
+	ft_printf("pa\n");
 }
 
 void	push_b(t_push *stack, t_stack *tmp)
 {
-	stack->count_element_A -= 1;
-	stack->count_element_B += 1;
-	ft_printf("pb\n");
 	if (stack->A == stack->A->next)
 		return (empty_stack(stack, tmp));
 	stack->A->next->previous = stack->A->previous;
@@ -92,5 +89,8 @@ void	push_b(t_push *stack, t_stack *tmp)
 		stack->B->is_top = FALSE;
 		stack->B = tmp;
 	}
+	stack->count_element_A -= 1;
+	stack->count_element_B += 1;
+	ft_printf("pb\n");
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/02/11 19:03:24 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:44:44 by luiz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ int	main(int argc, char **argv)
 	{
 		if (init_stacks(&stack, argc, argv) != 0)
 			return (error_message("Error: invalid input"));
-		push_swap(&stack);
+		push_swap(&stack, stack.count_element_A, stack.A);
 		// print_linked_list(stack.B);
-		finishing_swap(&stack);
-		print_linked_list(stack.A);
+		// print_linked_list(stack.A);
 		// print_linked_list(stack.B);
 		return (0);
 	}
