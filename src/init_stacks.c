@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:40:22 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/27 18:09:33 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:59:44 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,11 @@ int	init_links(int argc, t_push *stack, char **argv)
 		stack->original[i - 1] = ft_new_atoi(argv[i], &stack->err);
 		new = new_stack_element(argv, i, i);
 		if (new == NULL || stack->err == 1)
-		{
-			printf("teste1: %d\n", stack->err);
 			return (1);
-		}
 		else
 		{
 			if (add_in_end_element(stack, new, i - 1) != 0)
-			{
-				printf("teste2: %d\n", stack->err );
 				return (1);
-			}
 		}
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:25:41 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/07 16:35:28 by luiz             ###   ########.fr       */
+/*   Updated: 2022/03/12 00:01:09 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,63 +33,78 @@ int	print_linked_list(t_stack *stack)
 	return(i);
 }
 
-
-int	find_small(t_stack *tmp, int value)
+t_nums	find_smaller(t_stack *tmp, int low, int high)
 {
 	int		a;
-	int		position;
+	t_nums	to_find;
 
-	a = 0;
-	position = 0;
-	while (tmp->is_top == FALSE)
+	a = -1;
+	while(++a < low)
+		tmp = tmp->next;
+	to_find.position = 0;
+	to_find.value = tmp->num;
+	while (a < high)
 	{
-		if (value > tmp->num)
+		if (to_find.value > tmp->num)
 		{
-			value = tmp->num;
-			position = a;
+			to_find.value = tmp->num;
+			to_find.position = a;
 		}
 		tmp = tmp->next;
 		a++;
 	}
-	return (position);
+	return (to_find);
 }
 
-int	find_greater(t_stack *tmp, int value)
+t_nums	find_greater(t_stack *tmp, int low, int high)
 {
 	int		a;
-	int		position;
+	t_nums	to_find;
 
-	a = 0;
-	position = 0;
-	while (tmp->is_top == FALSE)
+	a = -1;
+	while(++a < low)
+		tmp = tmp->next;
+	to_find.position = 0;
+	to_find.value = tmp->num;
+	while (a < high)
 	{
-		if (value > tmp->num)
+		if (to_find.value < tmp->num)
 		{
-			value = tmp->num;
-			position = a;
+			to_find.value = tmp->num;
+			to_find.position = a;
 		}
 		tmp = tmp->next;
 		a++;
 	}
-	return (position);
+	return (to_find);
 }
 
 
 void	move(int moves, t_push *stack, void (*r)(t_push *),void (*rr)(t_push *))
 {
-		while(moves != 0)
+	while(moves != 0)
+	{
+		if (moves < 0)
 		{
-			if (moves < 0)
-			{
-				rr(stack);
-				moves++;
-			}
-			else
-			{
-				r(stack);
-				moves--;
-			}
+			rr(stack);
+			moves++;
 		}
+		else
+		{
+			r(stack);
+			moves--;
+		}
+	}
+}
+
+int	verify_chunks(t_push *stack, t_stack *now, int size)
+{
+	if (stack->B == now)
+	{
+		if(size % 2 == 1)
+			return(size / 2 + 1);
+	}
+	return(size / 2);
 }
 
 int	find_pivot(t_stack *stack, int size)
@@ -104,6 +119,6 @@ int	find_pivot(t_stack *stack, int size)
 		tmp[a] = stack->num;
 		stack = stack->next;
 	}
-	quickSort(tmp, 0, size);
-	return (tmp[size / 2]);
+	quickSort(tmp, 0, size - 1);
+	return (tmp[size / 2 - 1]);
 }

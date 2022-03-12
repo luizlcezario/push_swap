@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   verify_order.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
+/*   Created: 2022/03/10 14:25:16 by llima-ce          #+#    #+#             */
 /*   Updated: 2022/03/12 00:02:02 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+t_bool	verify_ordination(t_push *stack,t_stack *tmp)
 {
-	t_push stack;
+	int	a;
 
-	if (argc > 1)
+	a = -1;
+	if (stack->count_element_B == 0)
 	{
-		if (init_stacks(&stack, argc, argv) != 0)
-			return (error_message("Error: invalid input"));
-		if (verify_ordination(&stack, stack.A) == FALSE)
+		while (++a < stack->count_element_A)
 		{
-			if (stack.count_element_A <= 10)
-				mini_push_swap(&stack, stack.count_element_A);
-			else
-				push_swap(&stack, stack.count_element_A, stack.A);
+			if (stack->original[a] != tmp->num)
+				return(FALSE);
+			tmp = tmp->next;
 		}
-		return (0);
+		return (TRUE);
 	}
-	else
-		return (0);
+	return (FALSE);
 }
-

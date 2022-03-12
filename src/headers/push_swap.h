@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiz <luiz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:11:12 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/09 15:54:13 by luiz             ###   ########.fr       */
+/*   Updated: 2022/03/12 00:02:02 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,18 @@ int		finishing_swap(t_push *stack,t_stack *order, int low, int high);
 void	move(int moves, t_push *stack, void (*r)(t_push *),
 	void (*rr)(t_push *));
 	
-int		find_small(t_stack *tmp, int value);
-int		find_greater(t_stack *tmp, int value);
+t_nums	find_smaller(t_stack *tmp, int low, int high);
+t_nums	find_greater(t_stack *tmp, int low, int high);
 
 
 // new
-int	find_pivot(t_stack *stack , int size);
+
+int		finishing_swap(t_push *stack, t_stack *order, int low, int high);
+t_bool	verify_ordination(t_push *stack,t_stack *tmp);
+int		find_pivot(t_stack *stack , int size);
+void	mini_push_swap(t_push *stack, int size);
+void	choose_direction(int moves, t_push *stack, int total, char type);
+int		verify_chunks(t_push *stack, t_stack *now, int size);
 
 void	push_b(t_push *stack, t_stack *tmp);
 void	push_a(t_push *stack, t_stack *tmp);

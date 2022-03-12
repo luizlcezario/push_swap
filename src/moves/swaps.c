@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swaps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:42:47 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/27 17:40:45 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:07:51 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	swap_a(t_push *stack)
 {
-	t_stack *tmp;
+	t_stack		*tmp;
 
+	stack->A->is_top = FALSE;
+	stack->A->next->is_top = TRUE;
+	tmp = stack->A->next->next;
+	tmp->previous = stack->A;
 	stack->A->previous->next = stack->A->next;
 	stack->A->next->previous = stack->A->previous;
-	if (stack->A->previous->previous == stack->A->next)
-		stack->A->previous->previous = stack->A;
-	tmp = stack->A->next->next;
-	stack->A->next->next = stack->A;
-	stack->A->previous = stack->A->next;
-	stack->A = stack->A->next;
-	stack->A->next->next = tmp;
-	stack->A->is_top = TRUE;
-	stack->A->next->is_top = FALSE;
+	tmp = stack->A->next;
+	stack->A->next = tmp->next;
+	tmp->next = stack->A;
+	stack->A->previous = tmp;
+	stack->A = tmp;
 	ft_printf("sa\n");
 }
 

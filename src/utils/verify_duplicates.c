@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_duplicates.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:13:07 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/02/10 17:32:54 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:55:18 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	verify_duplicates(t_push *stack, int argc)
 	quickSort(stack->original, 0, argc - 2);
 	while (++i < argc - 1)
 	{
-		if (interpolationSearch(stack->original, i + 1, argc - 1,
+		if (interpolationSearch(stack->original, i + 1, argc - 2,
 			stack->original[i]) != -1)
 		{
 			stack->err = 1;

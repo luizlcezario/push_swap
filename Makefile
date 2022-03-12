@@ -1,9 +1,14 @@
 NAME=push_swap
 
 LIBFT = ./libft/libft.a
-FILES=main.c push_swap.c push_swap_utils.c init_stacks.c new_stack.c \
-	verify_duplicates.c errors.c quick_sort.c rotates.c pushs.c reverses.c \
-	swaps.c finishing_swap.c
+
+MOVES = rotates.c pushs.c reverses.c swaps.c
+
+UTILS = new_stack.c verify_duplicates.c errors.c quick_sort.c \
+		 verify_order.c push_swap_utils.c mini_push_swap_utils.c
+
+FILES = main.c push_swap.c finishing_swap.c init_stacks.c mini_push_swap.c\
+		$(addprefix moves/, $(MOVES)) $(addprefix utils/, $(UTILS)) 
 
 SRC=$(addprefix src/, $(FILES))
 CFLAGS= -Wall -Wextra -Werror -o $(NAME)
