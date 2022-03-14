@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/12 00:02:02 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:35:49 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 			if (stack.count_element_A <= 10)
 				mini_push_swap(&stack, stack.count_element_A);
 			else
-				push_swap(&stack, stack.count_element_A, stack.A);
+				push_swap(&stack, stack.count_element_A, stack.A, FALSE);
 		}
 		return (0);
 	}

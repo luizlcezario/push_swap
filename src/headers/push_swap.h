@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:11:12 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/12 00:02:02 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:35:43 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_push{
 	int		pivot;
 }	t_push;
 
-int	push_swap(t_push *stack, int size, t_stack *now);
+int push_swap(t_push *stack, int size, t_stack *now, t_bool rr);
 
 int		init_stacks(t_push *stack, int argc, char **argv);
 int		print_linked_list(t_stack *stack);
