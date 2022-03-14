@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:28:28 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 14:42:31 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:20:34 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int partition_chunks(t_push *stack, t_stack *changes, int a, int moves)
 		}
 		else
 		{
+
 			rotate_a(stack);
 			moves++;
 		}
@@ -78,7 +79,7 @@ int partition_chunks(t_push *stack, t_stack *changes, int a, int moves)
 	}
 	else if (a > 0)
 	{
-		if (changes->num >= stack->pivot)
+		if (changes->num > stack->pivot)
 		{
 			push_a(stack, stack->B);
 			a--;
@@ -100,32 +101,30 @@ int push_swap(t_push *stack, int size, t_stack *now, t_bool rr)
 
 	if (verify_ordination(stack, stack->A) == FALSE)
 	{
-		size_b = size / 2 ;
-		if (size % 2 == 1)
-			size_b += 1;
 		stack->pivot = find_pivot(now, size);
 		a = partition_chunks(stack, now, verify_chunks(stack, now, size), 0);
+		size_b = stack->count_element_B;
 		if(rr  == TRUE)
 			move(a * - 1, stack, &rotate_a, &reverse_a);
 		if (size_b <= 10)
 		{
-			// print_linked_list(stack->B);
-			// print_linked_list(stack->A);
+
 			finishing_swap(stack, stack->B, 0, stack->count_element_B);
 			a = -1;
-			while (++a < size_b - 1)
+			while (++a < size_b)
 				rotate_a(stack);
-			while (++a < size)
-				push_b(stack, stack->A);
-			finishing_swap(stack, stack->B, 0, stack->count_element_B);
 			a = -1;
-			while (++a < size / 2)
+			while (++a < size - size_b)
+				push_b(stack, stack->A);
+			a = -1;
+			finishing_swap(stack, stack->B, 0, stack->count_element_B);
+			while (++a < size - size_b)
 				rotate_a(stack);
 		}
 		else
 		{
 			push_swap(stack, stack->count_element_B , stack->B, FALSE);
-			push_swap(stack, size_b, stack->A, TRUE);
+			push_swap(stack, size - size / 2, stack->A, TRUE);
 		}
 	}
 	return (0);

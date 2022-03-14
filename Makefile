@@ -15,7 +15,7 @@ CFLAGS= -Wall -Wextra -Werror -o $(NAME)
 all:$(NAME)
 
 $(NAME): $(LIBFT)
-	@gcc -g3 -I ./src/headers $(SRC) -L ./libft -lft $(CFLAGS)
+	@gcc -g3 -I ./src/headers $(CFLAGS) $(SRC) -L ./libft -lft 
 
 $(LIBFT):
 	@make others -C ./libft
