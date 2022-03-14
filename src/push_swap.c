@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:28:28 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 18:20:34 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:31:04 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,10 @@ int push_swap(t_push *stack, int size, t_stack *now, t_bool rr)
 		stack->pivot = find_pivot(now, size);
 		a = partition_chunks(stack, now, verify_chunks(stack, now, size), 0);
 		size_b = stack->count_element_B;
-		if(rr  == TRUE)
+		if (rr  == TRUE)
 			move(a * - 1, stack, &rotate_a, &reverse_a);
-		if (size_b <= 10)
+		if (size_b <= 25)
 		{
-
 			finishing_swap(stack, stack->B, 0, stack->count_element_B);
 			a = -1;
 			while (++a < size_b)
