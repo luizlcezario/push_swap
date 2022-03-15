@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:11:12 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 18:08:30 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:13:15 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ typedef struct s_push{
 	int		*original;
 	t_stack	*A;
 	t_stack	*B;
-	t_nums minor_now;
+	t_nums	minor_now;
 	int		count_element_A;
 	int		count_element_B;
 	int		pivot;
+	int		moves_count;
 }	t_push;
 
 int push_swap(t_push *stack, int size, t_stack *now, t_bool rr);
@@ -61,17 +62,16 @@ int		add_in_end_element(t_push *stack, t_stack *new, int i);
 void	quickSort(int arr[], int low, int high);
 int		verify_duplicates(t_push *stack, int argc);
 void	split_chunk(t_push *stack);
-int		finishing_swap(t_push *stack,t_stack *order, int low, int high);
 void	move(int moves, t_push *stack, void (*r)(t_push *),
 	void (*rr)(t_push *));
 	
 t_nums	find_smaller(t_stack *tmp, int low, int high);
 t_nums	find_greater(t_stack *tmp, int low, int high);
-
+int abs_x(int x);
 
 // new
 
-int		finishing_swap(t_push *stack, t_stack *order, int low, int high);
+int		finishing_swap(t_push *stack, int low, int high, t_bool first);
 t_bool	verify_ordination(t_push *stack,t_stack *tmp);
 int		find_pivot(t_stack *stack , int size);
 void	mini_push_swap(t_push *stack, int size);
