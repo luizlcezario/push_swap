@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:25:41 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 18:12:05 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:32:41 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,7 @@ int	find_pivot(t_stack *stack, int size)
 		stack = stack->next;
 	}
 	quickSort(tmp, 0, size - 1);
-	return (tmp[size / 2 - 1]);
+	a = tmp[size / 2 - 1];
+	free(tmp);
+	return (a);
 }

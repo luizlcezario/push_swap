@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:11:18 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/27 18:05:22 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:33:39 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_stack	*new_stack_element(char **argv, int i, int istop)
 	int		err;
 
 	err = 0;
-	new = (t_stack *)malloc(sizeof(t_stack));
+	new = (t_stack *)malloc(1* sizeof(t_stack));
 	if (new == NULL)
 		return (NULL);
 	new->num = ft_new_atoi(argv[i], &err);

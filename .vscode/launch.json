@@ -38,7 +38,7 @@
 			],
 			"miDebuggerPath": "/usr/bin/lldb",
 		},
-		{
+		{,
 			"name": "lldb small",
 			"type": "lldb",
 			"request": "launch",
@@ -51,6 +51,9 @@
 				{
 					"description": "Enable pretty-printing for gdb",
 					"text": "-enable-pretty-printing",
+				},
+				{
+					"command": "valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --log-file=valgrind.log",
 				}
 			],
 			"miDebuggerPath": "/usr/bin/lldb",

@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:40:22 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/11 17:59:44 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 14:39:18 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	init_links(int argc, t_push *stack, char **argv)
 	while (++i < argc)
 	{
 		stack->original[i - 1] = ft_new_atoi(argv[i], &stack->err);
+		if (stack->err == 1)
+			return (1);
 		new = new_stack_element(argv, i, i);
-		if (new == NULL || stack->err == 1)
+		if (new == NULL)
 			return (1);
 		else
 		{

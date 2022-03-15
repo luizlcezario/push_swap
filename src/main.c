@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 19:12:45 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:57:20 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_push stack;
 
-	if (argc > 1)
+	if (argc > 2)
 	{
 		if (init_stacks(&stack, argc, argv) != 0)
 			return (error_message("Error: invalid input"));
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 			else
 				push_swap(&stack, stack.count_element_A, stack.A, FALSE);
 		}
+		free_all(&stack);
 		return (0);
 	}
 	else

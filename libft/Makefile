@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/27 13:53:47 by llima-ce          #+#    #+#              #
-#    Updated: 2022/01/13 20:10:19 by llima-ce         ###   ########.fr        #
+#    Updated: 2022/03/15 14:56:37 by llima-ce         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRCS_OTHERS =	get_next_line.c	\
 				ft_itoa_base.c	\
 				ft_strfstr.c	\
 				ft_new_atoi.c
+
 
 
 

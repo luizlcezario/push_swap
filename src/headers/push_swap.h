@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:11:12 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 20:13:15 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:42:42 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,18 @@ t_stack	*new_stack_element(char **argv ,int i, int istop);
 int		add_in_end_element(t_push *stack, t_stack *new, int i);
 void	quickSort(int arr[], int low, int high);
 int		verify_duplicates(t_push *stack, int argc);
-void	split_chunk(t_push *stack);
 void	move(int moves, t_push *stack, void (*r)(t_push *),
 	void (*rr)(t_push *));
-	
+int		finishing_swap(t_push *stack, int low, int high, t_bool first);
+int		find_pivot(t_stack *stack , int size);
 t_nums	find_smaller(t_stack *tmp, int low, int high);
 t_nums	find_greater(t_stack *tmp, int low, int high);
-int abs_x(int x);
+int		abs_x(int x);
 
 // new
 
-int		finishing_swap(t_push *stack, int low, int high, t_bool first);
+void	free_all(t_push *stack);
 t_bool	verify_ordination(t_push *stack,t_stack *tmp);
-int		find_pivot(t_stack *stack , int size);
 void	mini_push_swap(t_push *stack, int size);
 void	choose_direction(int moves, t_push *stack, int total, char type);
 int		verify_chunks(t_push *stack, t_stack *now, int size);
