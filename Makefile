@@ -5,7 +5,8 @@ LIBFT = ./libft/libft.a
 MOVES = rotates.c pushs.c reverses.c swaps.c
 
 UTILS = new_stack.c verify_duplicates.c errors.c quick_sort.c \
-		 verify_order.c push_swap_utils.c mini_push_swap_utils.c
+		 verify_order.c push_swap_utils.c mini_push_swap_utils.c \
+		sort_swap.c
 
 FILES = main.c push_swap.c finishing_swap.c init_stacks.c mini_push_swap.c\
 		$(addprefix moves/, $(MOVES)) $(addprefix utils/, $(UTILS)) 

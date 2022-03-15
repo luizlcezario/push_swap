@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:28:28 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 18:20:34 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:41:10 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,29 +103,37 @@ int push_swap(t_push *stack, int size, t_stack *now, t_bool rr)
 	{
 		stack->pivot = find_pivot(now, size);
 		a = partition_chunks(stack, now, verify_chunks(stack, now, size), 0);
-		size_b = stack->count_element_B;
-		if(rr  == TRUE)
+		if (rr  == TRUE)
 			move(a * - 1, stack, &rotate_a, &reverse_a);
-		if (size_b <= 10)
+		stack->moves_count = stack->count_element_B;
+		size_b = stack->count_element_B;
+		if (size / 2 <= 15)
 		{
-
-			finishing_swap(stack, stack->B, 0, stack->count_element_B);
-			a = -1;
-			while (++a < size_b)
+			finishing_swap(stack, 0, stack->count_element_B, TRUE);
+			while(--stack->moves_count >= 0)
 				rotate_a(stack);
 			a = -1;
 			while (++a < size - size_b)
 				push_b(stack, stack->A);
-			a = -1;
-			finishing_swap(stack, stack->B, 0, stack->count_element_B);
-			while (++a < size - size_b)
+			stack->moves_count = stack->count_element_B;
+			finishing_swap(stack, 0, stack->count_element_B, TRUE);
+			while(--stack->moves_count >= 0)
 				rotate_a(stack);
 		}
 		else
 		{
-			push_swap(stack, stack->count_element_B , stack->B, FALSE);
-			push_swap(stack, size - size / 2, stack->A, TRUE);
+			push_swap(stack, stack->count_element_B, stack->B, FALSE);
+			if (size == (stack->count_element_A + stack->count_element_B))
+				push_swap(stack, size / 2, stack->A, TRUE);
+			else
+			{
+				a = -1;
+				while(++a < size - size_b)
+					push_b(stack, stack->A);
+				push_swap(stack, stack->count_element_B, stack->B, FALSE);
+			}
 		}
 	}
+
 	return (0);
 }
