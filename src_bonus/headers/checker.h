@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:11:12 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 15:45:09 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:23:13 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include "../../libft/libft.h"
 
@@ -36,9 +36,6 @@ typedef struct s_push{
 	t_nums	minor_now;
 	int		count_element_a;
 	int		count_element_b;
-	int		pivot;
-	int		pivot_2;
-	int		moves_count;
 }	t_push;
 
 // init
@@ -48,33 +45,13 @@ void	quick_sort(int arr[], int low, int high);
 int		verify_duplicates(t_push *stack, int argc);
 int		init_stacks(t_push *stack, int argc, char **argv);
 
-// algo G
-void	push_swap(t_push *stack, int size, t_stack *now, t_bool rr);
-void	move(int moves, t_push *stack, void (*r)(t_push *),
-			void (*rr)(t_push *));
-void	finishing_swap(t_push *stack, int high, t_bool first);
-int		find_pivot(t_stack *stack, int size);
-int		error_message(char *str);
-void	free_all(t_push *stack);
-int		partition_chunks(t_push *stack, t_stack *changes, int a, int moves);
-void	insertion(t_push *stack);
-void	new_values(t_nums move, int *low, int *high);
-void	finishing(t_bool first, t_push *stack);
-
-// algo M
-void	medium_push_swap(t_push *stack);
-void	mini_push_swap(t_push *stack, int size);
-t_bool	verify_mini_order(t_stack *stack, int size);
-int		verify_chunks(t_push *stack, t_stack *now, int size);
+// checker
+t_bool	checker(t_push *stack);
 
 // utils
-t_nums	find_smaller_finish(t_push *stack, t_stack *tmp, int low, int high);
-t_nums	find_smaller(t_stack *tmp, int low, int high);
-t_nums	find_greater_finish(t_push *stack, t_stack *tmp, int low, int high);
-t_nums	find_greater(t_stack *tmp, int low, int high);
-int		abs_x(int x);
 t_bool	verify_ordination(t_push *stack, t_stack *tmp);
-
+void	free_all(t_push *stack);
+int		error(void);
 // moves
 void	push_b(t_push *stack, t_stack *tmp);
 void	push_a(t_push *stack, t_stack *tmp);

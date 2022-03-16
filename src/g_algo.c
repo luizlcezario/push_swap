@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   g_algo.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:28:28 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 22:17:19 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:37:06 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ int moves)
 {
 	if (a > 0)
 	{
+		stack->pivot_2 = find_pivot(stack->b, stack->count_element_b);
 		if (changes->num <= stack->pivot)
 		{
 			push_b(stack, stack->a);
+			if (stack->b->num <= stack->pivot_2)
+				rotate_b(stack);
 			a--;
 		}
 		else
@@ -76,22 +79,23 @@ void	quick_swap(t_push *stack, int size, t_stack *now, t_bool rr)
 	else
 	{
 		a = -1;
+		stack->pivot_2 = find_pivot(stack->a, size - size_b);
 		while (++a < size - size_b)
+		{
 			push_b(stack, stack->a);
+			if (stack->b->num <= stack->pivot_2)
+				rotate_b(stack);
+		}
 		push_swap(stack, stack->count_element_b, stack->b, FALSE);
 	}
 }
 
 void	push_swap(t_push *stack, int size, t_stack *now, t_bool rr)
 {
-	int	size_b;
-
 	if (verify_ordination(stack, stack->a) == FALSE)
 	{
-		stack->moves_count = stack->count_element_b;
-		size_b = stack->count_element_b;
 		if (size <= 25)
-			insertion(stack, size, size_b);
+			insertion(stack);
 		else
 			quick_swap(stack, size, now, rr);
 	}

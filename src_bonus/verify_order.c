@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   verify_order.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/29 16:54:40 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 15:46:13 by llima-ce         ###   ########.fr       */
+/*   Created: 2022/03/10 14:25:16 by llima-ce          #+#    #+#             */
+/*   Updated: 2022/03/16 15:49:41 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_bool	verify_ordination(t_push *stack, t_stack *tmp)
 {
-	t_list	*new1;
+	int	a;
 
-	if (!lst || !f)
-		return (NULL);
-	new1 = ft_lstnew(f(lst->content));
-	if (new1 == NULL)
+	a = -1;
+	if (stack->count_element_b == 0)
 	{
-		ft_lstclear(&new1, del);
-		return (NULL);
+		while (++a < stack->count_element_a)
+		{
+			if (stack->original[a] != tmp->num)
+				return (FALSE);
+			tmp = tmp->next;
+		}
+		return (TRUE);
 	}
-	new1->next = ft_lstmap(lst->next, f, del);
-	return (new1);
+	return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 20:34:08 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 01:28:22 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:36:47 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	new_values(t_nums move, int *low, int *high)
 	*high -= 1;
 }
 
-void	finishing_swap(t_push *stack, int low, int high, t_bool first)
+void	finishing_swap(t_push *stack, int high, t_bool first)
 {
 	t_nums	moves_g;
 	t_nums	moves_s;
@@ -82,13 +82,13 @@ void	finishing_swap(t_push *stack, int low, int high, t_bool first)
 		stack->moves_count -= 1;
 	stack->minor_now.position = 0;
 	stack->minor_now.value = stack->b->num;
-	moves_s = find_smaller_finish(stack, stack->b, low, high);
-	moves_g = find_greater_finish(stack, stack->b, low, high);
+	moves_s = find_smaller_finish(stack, stack->b, high / 2, high);
+	moves_g = find_greater_finish(stack, stack->b, high / 2, high);
 	if (abs_x(moves_g.position) < abs_x(moves_s.position))
 		stack->minor_now = moves_g;
 	else
 		stack->minor_now = moves_s;
-	finishing(first, stack, &low, &high);
-	return (finishing_swap(stack, low, high,
+	finishing(first, stack);
+	return (finishing_swap(stack, high--,
 			abs_x(moves_g.position) < abs_x(moves_s.position)));
 }

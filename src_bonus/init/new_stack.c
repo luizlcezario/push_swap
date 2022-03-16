@@ -6,11 +6,11 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:11:18 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 15:46:52 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:48:53 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 t_stack	*new_stack_element(char **argv, int i, int istop)
 {

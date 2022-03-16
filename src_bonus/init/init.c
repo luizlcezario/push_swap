@@ -6,11 +6,11 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:40:22 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 15:45:54 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:48:38 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 t_bool	is_number(char *str)
 {

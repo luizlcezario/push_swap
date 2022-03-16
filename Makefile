@@ -1,52 +1,51 @@
 NAME = push_swap
-
+CHECKER = checker
 LIBFT = ./libft/libft.a
-
 MOVES = rotates.c pushs.c reverses.c swaps.c
-
 G_ALGO = g_algo_utils_2.c g_algo_utils_3.c g_algo_utils.c
-
 INIT = init.c new_stack.c verify_duplicates.c
-
 M_ALGO = m_algo_utils.c
-
 UTILS = errors.c quick_sort.c verify_order.c $(addprefix init/, $(INIT)) \
 	$(addprefix g_algo/, $(G_ALGO)) $(addprefix m_algo/, $(M_ALGO))
-
 FILES = main.c g_algo.c m_algo.c $(addprefix moves/, $(MOVES)) \
 	$(addprefix utils/, $(UTILS))
+SRC= $(addprefix src/, $(FILES))
 
-SRC=$(addprefix src/, $(FILES))
+FILES_BONUS = main.c checker.c errors.c verify_order.c quick_sort.c \
+	$(addprefix init/, $(INIT)) \
+	$(addprefix moves/, $(MOVES))
 
-CFLAGS= -Wall -Wextra -Werror -o $(NAME)
+SRC_BONUS = $(addprefix src_bonus/, $(FILES_BONUS))
+
+LIB = -L ./libft -lft
+CFLAGS = -Wall -Wextra -Werror 
 
 all:$(NAME)
 
+bonus: $(CHECKER)
+
+
 $(NAME): $(LIBFT)
-	@gcc -g3 -I ./src/headers $(CFLAGS) $(SRC) -L ./libft -lft 
+	@gcc $(CFLAGS) -I ./src/headers $(SRC)  -o $(NAME) $(LIB)
+
+$(CHECKER): $(LIBFT)
+	gcc $(CFLAGS) -I ./src_bonus/headers $(SRC_BONUS) -o $(CHECKER) $(LIB) -g3
 
 $(LIBFT):
 	@make others -C ./libft
 
 clean:
-	rm $(LIBFT)
+	make -C libft clean
 
 fclean: clean
-	rm $(NAME)
+	make -C libft fclean
+	rm $(NAME) $(CHECKER)
 
-re: fclean all
+re: fclean all bonus
 
-teste: re
-	./push_swap 450 583 925 888 153 580 596 612 235 618 547 111 374 911 818 426 323 690 320 595 882 669 979 667 995 923 655 917 564 683 366 147 607 253 300 187 849 912 421 466 459 532 840 369 349 265 691  38 585 286 920 264 587 248 509 902 798  73 163 220 192 416 520 378 431 799 730 889 330 569 258 678 834 948 716 418 233 636 670 497 222 918 731 820 175 804 404 338 24 754 543 973  17 771 746 862 101 315 119 778
+reb: re bonus
 
-teste2: 
-	./push_swap 450 583 925 888 153 580 596 612
-
-end: re
-	cp push_swap push_swap_tester/push_swap
-	sudo bash ./push_swap_tester/tester.sh
-
-view: re
+view:
 	python3 -m push_swap_gui
 
-.PHONY:all clean fclean re teste view
+.PHONY:all clean fclean re bonus reb
