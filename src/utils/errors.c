@@ -6,13 +6,13 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:26:46 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 15:51:13 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:23:23 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		error_message(char *str)
+int	error_message(char *str)
 {
 	ft_printf("%s\n", str);
 	return (1);
@@ -20,14 +20,13 @@ int		error_message(char *str)
 
 void	free_all(t_push *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
-	while(--stack->count_element_A >= 0)
+	while (--stack->count_element_a >= 0)
 	{
-		
-		tmp = stack->A->next;
-		free(stack->A);
-		stack->A = tmp;
+		tmp = stack->a->next;
+		free(stack->a);
+		stack->a = tmp;
 	}
 	free(stack->original);
 }

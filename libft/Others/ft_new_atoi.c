@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:33:10 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 14:56:46 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:46:33 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	atoi_while(const char *str, int sign, int *num)
 				&& *str - '0' > 7))
 		{
 			if (sign == -1 && *str - '0' == 8)
-				return(0);
+				return (0);
 			else
 				return (1);
 		}
@@ -48,7 +48,8 @@ int	ft_new_atoi(const char *str, int *err)
 		str++;
 	}
 	num = 0;
-	while (ft_isdigit(*str)){
+	while (ft_isdigit(*str))
+	{
 		if (*err == 1)
 			return (0);
 		*err = atoi_while(str, sign, &num);

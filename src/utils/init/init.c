@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stacks.c                                      :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:40:22 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 14:39:18 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:34:26 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ int	init_links(int argc, t_push *stack, char **argv)
 
 int	init_stacks(t_push *stack, int argc, char **argv)
 {
-
-	stack->B = NULL;
+	stack->b = NULL;
 	stack->err = 0;
-	stack->count_element_A = argc - 1;
-	stack->count_element_B = 0;
+	stack->count_element_a = argc - 1;
+	stack->count_element_b = 0;
 	stack->original = (int *)malloc(sizeof(int) * argc);
 	if (init_links(argc, stack, argv) != 0)
 		return (1);

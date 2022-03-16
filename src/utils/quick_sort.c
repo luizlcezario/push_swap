@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llima-ce <llima-ce@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 15:28:19 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/01/14 20:50:25 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:17:53 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void swap(int* a, int* b)
+void	swap(int *a, int *b)
 {
-	int t;
+	int	t;
+
 	t = *a;
 	*a = *b;
 	*b = t;
 }
 
-int partition(int arr[], int low, int high)
+int	partition(int arr[], int low, int high)
 {
-	int pivot;
-	int i;
+	int	pivot;
+	int	i;
 	int	j;
 
 	pivot = arr[high];
@@ -42,14 +43,14 @@ int partition(int arr[], int low, int high)
 	return (i + 1);
 }
 
-void quickSort(int arr[], int low, int high)
+void	quick_sort(int arr[], int low, int high)
 {
-	int pi;
+	int	pi;
 
 	if (low < high)
 	{
 		pi = partition(arr, low, high);
-		quickSort(arr, low, pi - 1);
-		quickSort(arr, pi + 1, high);
+		quick_sort(arr, low, pi - 1);
+		quick_sort(arr, pi + 1, high);
 	}
 }

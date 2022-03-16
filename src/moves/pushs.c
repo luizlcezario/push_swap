@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:07:06 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/11 23:36:52 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:23:28 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,83 +14,82 @@
 
 void	empty_stack(t_push *stack, t_stack *tmp)
 {
-	if (tmp == stack->A)
+	if (tmp == stack->a)
 	{
-		stack->A = NULL;
-		stack->B->previous->next = tmp;
-		tmp->previous = stack->B->previous;
-		stack->B->previous = tmp;
-		tmp->next = stack->B;
-		stack->B->is_top = FALSE;
-		stack->B = tmp;
+		stack->a = NULL;
+		stack->b->previous->next = tmp;
+		tmp->previous = stack->b->previous;
+		stack->b->previous = tmp;
+		tmp->next = stack->b;
+		stack->b->is_top = FALSE;
+		stack->b = tmp;
 	}
 	else
 	{
-		stack->B = NULL;
-		stack->A->previous->next = tmp;
-		tmp->previous = stack->A->previous;
-		stack->A->previous = tmp;
-		tmp->next = stack->A;
-		stack->A->is_top = FALSE;
-		stack->A = tmp;
+		stack->b = NULL;
+		stack->a->previous->next = tmp;
+		tmp->previous = stack->a->previous;
+		stack->a->previous = tmp;
+		tmp->next = stack->a;
+		stack->a->is_top = FALSE;
+		stack->a = tmp;
 	}
 }
 
 void	push_a(t_push *stack, t_stack *tmp)
 {
-	stack->count_element_A += 1;
-	stack->count_element_B -= 1;
+	stack->count_element_a += 1;
+	stack->count_element_b -= 1;
 	ft_printf("pa\n");
-	if (stack->B == stack->B->next)
+	if (stack->b == stack->b->next)
 		return (empty_stack(stack, tmp));
-	stack->B->next->previous = stack->B->previous;
-	stack->B->previous->next = stack->B->next;
-	stack->B = stack->B->next;
-	stack->B->is_top = TRUE;
-	if (stack->A == NULL)
+	stack->b->next->previous = stack->b->previous;
+	stack->b->previous->next = stack->b->next;
+	stack->b = stack->b->next;
+	stack->b->is_top = TRUE;
+	if (stack->a == NULL)
 	{
-		stack->A = tmp;
-		tmp->next = stack->A;
-		tmp->previous = stack->A;
+		stack->a = tmp;
+		tmp->next = stack->a;
+		tmp->previous = stack->a;
 		tmp->is_top = TRUE;
 	}
 	else
 	{
-		stack->A->previous->next = tmp;
-		tmp->previous = stack->A->previous;
-		stack->A->previous = tmp;
-		tmp->next = stack->A;
-		stack->A->is_top = FALSE;
-		stack->A = tmp;
+		stack->a->previous->next = tmp;
+		tmp->previous = stack->a->previous;
+		stack->a->previous = tmp;
+		tmp->next = stack->a;
+		stack->a->is_top = FALSE;
+		stack->a = tmp;
 	}
 }
 
 void	push_b(t_push *stack, t_stack *tmp)
 {
-	stack->count_element_A -= 1;
-	stack->count_element_B += 1;
+	stack->count_element_a -= 1;
+	stack->count_element_b += 1;
 	ft_printf("pb\n");
-	if (stack->A == stack->A->next)
+	if (stack->a == stack->a->next)
 		return (empty_stack(stack, tmp));
-	stack->A->next->previous = stack->A->previous;
-	stack->A->previous->next = stack->A->next;
-	stack->A = stack->A->next;
-	stack->A->is_top = TRUE;
-	if (stack->B == NULL)
+	stack->a->next->previous = stack->a->previous;
+	stack->a->previous->next = stack->a->next;
+	stack->a = stack->a->next;
+	stack->a->is_top = TRUE;
+	if (stack->b == NULL)
 	{
-		stack->B = tmp;
-		tmp->next = stack->B;
-		tmp->previous = stack->B;
+		stack->b = tmp;
+		tmp->next = stack->b;
+		tmp->previous = stack->b;
 		tmp->is_top = TRUE;
 	}
 	else
 	{
-		stack->B->previous->next = tmp;
-		tmp->previous = stack->B->previous;
-		stack->B->previous = tmp;
-		tmp->next = stack->B;
-		stack->B->is_top = FALSE;
-		stack->B = tmp;
+		stack->b->previous->next = tmp;
+		tmp->previous = stack->b->previous;
+		stack->b->previous = tmp;
+		tmp->next = stack->b;
+		stack->b->is_top = FALSE;
+		stack->b = tmp;
 	}
 }
-

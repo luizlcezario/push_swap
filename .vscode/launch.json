@@ -38,13 +38,13 @@
 			],
 			"miDebuggerPath": "/usr/bin/lldb",
 		},
-		{,
+		{
 			"name": "lldb small",
 			"type": "lldb",
 			"request": "launch",
 			"program": "${workspaceRoot}/push_swap",
 			"args": [
-				"10","5","4","2","3","1" , "9", "7", "8"
+				"450","583","925","888","153","580","596","612"
 			],
 			"cwd": "${workspaceRoot}",
 			"setupCommands": [

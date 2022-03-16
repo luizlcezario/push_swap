@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finishing_swap.c                                   :+:      :+:    :+:   */
+/*   g_algo_utils_3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 20:34:08 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/14 21:40:41 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:43:51 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_nums	find_greater_finish(t_push *stack, t_stack *tmp, int low, int high)
 	}
 	return (stack->minor_now);
 }
-
 
 t_nums	find_smaller_finish(t_push *stack, t_stack *tmp, int low, int high)
 {
@@ -72,45 +71,22 @@ void	new_values(t_nums move, int *low, int *high)
 	*high -= 1;
 }
 
-int	finishing_swap(t_push *stack, int low, int high, t_bool first)
+void	finishing_swap(t_push *stack, int low, int high, t_bool first)
 {
 	t_nums	moves_g;
 	t_nums	moves_s;
 
-	if (stack->B == NULL || high == 0)
-		return (0);
+	if (stack->b == NULL || high == 0)
+		return ;
 	if (first == FALSE)
 		stack->moves_count -= 1;
 	stack->minor_now.position = 0;
-	stack->minor_now.value = stack->B->num;
-	moves_s = find_smaller_finish(stack, stack->B, low, high);
-	moves_g = find_greater_finish(stack, stack->B, low, high);
+	stack->minor_now.value = stack->b->num;
+	moves_s = find_smaller_finish(stack, stack->b, low, high);
+	moves_g = find_greater_finish(stack, stack->b, low, high);
 	if (abs_x(moves_g.position) < abs_x(moves_s.position))
-	{
-		if (first == FALSE && moves_g.position > 0)
-		{
-			rotate_ab(stack);
-			moves_g.position -= 1;
-		}
-		else if (first == FALSE)
-			rotate_a(stack);
-		new_values(moves_g, &low, &high);
-		move(moves_g.position, stack, &rotate_b, &reverse_b);
-		push_a(stack, stack->B);
-		return(finishing_swap(stack, low, high , TRUE));
-	}
+		stack->minor_now = moves_g;
 	else
-	{
-		if (first == FALSE && moves_s.position > 0)
-		{
-			rotate_ab(stack);
-			moves_s.position -= 1;
-		}
-		else if (first == FALSE)
-			rotate_a(stack);
-		new_values(moves_s, &low, &high);
-		move(moves_s.position, stack, &rotate_b, &reverse_b);
-		push_a(stack, stack->B);
-		return(finishing_swap(stack, low, high , FALSE));
-	}
+		stack->minor_now = moves_s;
+	finishing(first, stack, &low, &high);
 }

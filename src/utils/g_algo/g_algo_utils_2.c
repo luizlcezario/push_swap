@@ -6,32 +6,11 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:25:41 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 15:32:41 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:23:28 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	print_linked_list(t_stack *stack)
-{
-	
-	int i;
-
-	i = 0;
-	if	(stack != NULL)
-	{	
-		ft_printf("%d: %d\n", i, stack->num);
-		stack = stack->next;
-		while (stack->is_top == FALSE)
-		{
-			i++;
-			ft_printf("%d: %d\n",i , stack->num);
-			stack = stack->next;
-		}
-		stack = stack->next;
-	}
-	return(i);
-}
 
 t_nums	find_smaller(t_stack *tmp, int low, int high)
 {
@@ -39,7 +18,7 @@ t_nums	find_smaller(t_stack *tmp, int low, int high)
 	t_nums	to_find;
 
 	a = -1;
-	while(++a < low)
+	while (++a < low)
 		tmp = tmp->next;
 	to_find.position = 0;
 	to_find.value = tmp->num;
@@ -62,7 +41,7 @@ t_nums	find_greater(t_stack *tmp, int low, int high)
 	t_nums	to_find;
 
 	a = -1;
-	while(++a < low)
+	while (++a < low)
 		tmp = tmp->next;
 	to_find.position = 0;
 	to_find.value = tmp->num;
@@ -79,10 +58,10 @@ t_nums	find_greater(t_stack *tmp, int low, int high)
 	return (to_find);
 }
 
-
-void	move(int moves, t_push *stack, void (*r)(t_push *),void (*rr)(t_push *))
+void	move(int moves, t_push *stack, void (*r)(t_push *),
+	void (*rr)(t_push *))
 {
-	while(moves != 0)
+	while (moves != 0)
 	{
 		if (moves < 0)
 		{
@@ -99,12 +78,12 @@ void	move(int moves, t_push *stack, void (*r)(t_push *),void (*rr)(t_push *))
 
 int	verify_chunks(t_push *stack, t_stack *now, int size)
 {
-	if (stack->B == now)
+	if (stack->b == now)
 	{
-		if(size % 2 == 1)
-			return(size / 2 + 1);
+		if (size % 2 == 1)
+			return (size / 2 + 1);
 	}
-	return(size / 2);
+	return (size / 2);
 }
 
 int	find_pivot(t_stack *stack, int size)
@@ -119,7 +98,7 @@ int	find_pivot(t_stack *stack, int size)
 		tmp[a] = stack->num;
 		stack = stack->next;
 	}
-	quickSort(tmp, 0, size - 1);
+	quick_sort(tmp, 0, size - 1);
 	a = tmp[size / 2 - 1];
 	free(tmp);
 	return (a);
