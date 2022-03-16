@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:40:22 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 01:28:08 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:36:54 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ t_bool	is_number(char *str)
 {
 	while (*str != 0)
 	{
-		if (*str < '0' || *str > '9')
-			return (FALSE);
+		if (*str != '-')
+		{
+			if (*str < '0' || *str > '9')
+				return (FALSE);
+		}
 		str++;
 	}
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 23:56:54 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:30:32 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		if (init_stacks(&stack, argc, argv) != 0)
 		{
 			free_all(&stack);
-			return (error_message("Error"));
+			exit (error_message("Error"));
 		}
 		if (verify_ordination(&stack, stack.a) == FALSE)
 		{
@@ -31,8 +31,8 @@ int	main(int argc, char **argv)
 				push_swap(&stack, stack.count_element_a, stack.a, FALSE);
 		}
 		free_all(&stack);
-		return (0);
+		exit (0);
 	}
 	else
-		return (0);
+		exit (0);
 }
