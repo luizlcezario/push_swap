@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 16:02:35 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 17:23:13 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:37:48 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_bool	checker(t_push *stack)
 		if (move(stack, str) == 1)
 		{
 			free(str);
-			break ;
+			stack->err = 1;
+			return (FALSE);
 		}
 		free(str);
 		str = get_next_line(STDIN_FILENO);

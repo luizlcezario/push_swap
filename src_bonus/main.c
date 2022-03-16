@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:48:10 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 17:20:43 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:31:13 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ int	main(int argc, char **argv)
 		}
 		if (checker(&stack))
 		{
-			printf("OK\n");
+			ft_printf("OK\n");
 			free_all(&stack);
 			return (0);
 		}
-		printf("KO\n");
+		if (stack.err)
+			ft_printf("Error\n");
+		else
+			ft_printf("KO\n");
 		free_all(&stack);
 		return (1);
 	}

@@ -6,13 +6,13 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:07:06 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 16:49:10 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:53:21 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	empty_stack(t_push *stack, t_stack *tmp)
+static void	empty_stack(t_push *stack, t_stack *tmp)
 {
 	if (tmp == stack->a)
 	{
@@ -36,13 +36,8 @@ void	empty_stack(t_push *stack, t_stack *tmp)
 	}
 }
 
-void	push_a(t_push *stack, t_stack *tmp)
+static void	pa(t_push *stack, t_stack *tmp)
 {
-	stack->count_element_a += 1;
-	stack->count_element_b -= 1;
-	ft_printf("pa\n");
-	if (stack->b == stack->b->next)
-		return (empty_stack(stack, tmp));
 	stack->b->next->previous = stack->b->previous;
 	stack->b->previous->next = stack->b->next;
 	stack->b = stack->b->next;
@@ -65,12 +60,19 @@ void	push_a(t_push *stack, t_stack *tmp)
 	}
 }
 
-void	push_b(t_push *stack, t_stack *tmp)
+void	push_a(t_push *stack, t_stack *tmp)
 {
-	stack->count_element_a -= 1;
-	stack->count_element_b += 1;
+	stack->count_element_a += 1;
+	stack->count_element_b -= 1;
+	if (stack->b == NULL)
+		return ;
 	if (stack->a == stack->a->next)
 		return (empty_stack(stack, tmp));
+	pa(stack, tmp);
+}
+
+static void	pb(t_push *stack, t_stack *tmp)
+{
 	stack->a->next->previous = stack->a->previous;
 	stack->a->previous->next = stack->a->next;
 	stack->a = stack->a->next;
@@ -91,4 +93,15 @@ void	push_b(t_push *stack, t_stack *tmp)
 		stack->b->is_top = FALSE;
 		stack->b = tmp;
 	}
+}
+
+void	push_b(t_push *stack, t_stack *tmp)
+{
+	stack->count_element_a -= 1;
+	stack->count_element_b += 1;
+	if (stack->a == NULL)
+		return ;
+	if (stack->a == stack->a->next)
+		return (empty_stack(stack, tmp));
+	pb(stack, tmp);
 }
