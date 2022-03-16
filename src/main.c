@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 21:43:26 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/15 23:56:54 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 	{
 		if (init_stacks(&stack, argc, argv) != 0)
-			return (error_message("Error: invalid input"));
+		{
+			free_all(&stack);
+			return (error_message("Error"));
+		}
 		if (verify_ordination(&stack, stack.a) == FALSE)
 		{
 			if (stack.count_element_a <= 10)

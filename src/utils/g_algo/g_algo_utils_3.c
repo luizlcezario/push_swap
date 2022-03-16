@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 20:34:08 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 22:43:51 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:28:22 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,6 @@ void	finishing_swap(t_push *stack, int low, int high, t_bool first)
 	else
 		stack->minor_now = moves_s;
 	finishing(first, stack, &low, &high);
+	return (finishing_swap(stack, low, high,
+			abs_x(moves_g.position) < abs_x(moves_s.position)));
 }

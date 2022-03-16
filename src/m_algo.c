@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:26:26 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 23:26:10 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:28:34 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	medium_push_swap(t_push *stack)
 
 	if (!verify_ordination(stack, stack->a))
 	{
-		while (stack->count_element_a != 3)
+		while (stack->count_element_a > 3)
 			push_b(stack, stack->a);
 		mini_push_swap(stack, stack->count_element_a);
 		while (stack->count_element_b > 0)

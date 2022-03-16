@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 22:17:59 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/15 22:46:14 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:23:17 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	finishing(t_bool first, t_push *stack, int *low, int *high)
 	new_values(stack->minor_now, low, high);
 	move(stack->minor_now.position, stack, &rotate_b, &reverse_b);
 	push_a(stack, stack->b);
-	return (finishing_swap(stack, *low, *high, TRUE));
 }
 
 int	abs_x(int x)
