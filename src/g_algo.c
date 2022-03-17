@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:28:28 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 15:37:06 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:51:07 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	quick_swap(t_push *stack, int size, t_stack *now, t_bool rr)
 		move(a * -1, stack, &rotate_a, &reverse_a);
 	size_b = stack->count_element_b;
 	push_swap(stack, stack->count_element_b, stack->b, FALSE);
-	if (size == stack->count_element_b + stack->count_element_a)
-		push_swap(stack, size / 2, stack->a, TRUE);
+	if (size == stack->count_element_b + stack->count_element_a && stack->count_element_b + stack->count_element_a / 2 > 50)
+		push_swap(stack, verify_chunks(stack, stack->b, size), stack->a, TRUE);
 	else
 	{
 		a = -1;

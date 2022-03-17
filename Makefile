@@ -25,7 +25,7 @@ all:$(NAME)
 bonus: $(CHECKER)
 
 $(NAME): $(LIBFT)
-	@gcc $(CFLAGS) -I ./src/headers $(SRC)  -o $(NAME) $(LIB)
+	@gcc $(CFLAGS) -I ./src/headers $(SRC) -g3 -o $(NAME) $(LIB)
 
 $(CHECKER): $(LIBFT)
 	gcc $(CFLAGS) -I ./src_bonus/headers $(SRC_BONUS) -o $(CHECKER) $(LIB) -g3
@@ -38,13 +38,13 @@ clean:
 
 fclean: clean
 	make -C libft fclean
-	rm $(NAME) $(CHECKER)
+	rm $(NAME)
 
 re: fclean all bonus
 
 reb: re bonus
 
-view:
+view: re
 	python3 -m push_swap_gui
 
 .PHONY: all clean fclean re bonus reb
