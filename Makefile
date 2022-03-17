@@ -24,7 +24,6 @@ all:$(NAME)
 
 bonus: $(CHECKER)
 
-
 $(NAME): $(LIBFT)
 	@gcc $(CFLAGS) -I ./src/headers $(SRC)  -o $(NAME) $(LIB)
 
@@ -48,4 +47,4 @@ reb: re bonus
 view:
 	python3 -m push_swap_gui
 
-.PHONY:all clean fclean re bonus reb
+.PHONY: all clean fclean re bonus reb

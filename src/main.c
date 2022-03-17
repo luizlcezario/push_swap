@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:07:16 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 17:15:10 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:08:05 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		}
 		if (verify_ordination(&stack, stack.a) == FALSE)
 		{
-			if (stack.count_element_a <= 10)
+			if (stack.count_element_a <= 25)
 				medium_push_swap(&stack);
 			else
 				push_swap(&stack, stack.count_element_a, stack.a, FALSE);
