@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:33:10 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/28 18:04:56 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/28 20:12:23 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int ft_new_atoi(const char *str, int *err)
 	int num;
 
 	sign = ft_sign(str, err);
+	if (*str == '+' || *str == '-')
+		str++;
 	if (*err == 1)
 		return (0);
 	num = 0;

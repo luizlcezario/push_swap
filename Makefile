@@ -38,7 +38,8 @@ clean:
 
 fclean: clean
 	make -C libft fclean
-	rm $(NAME) $(CHECKER)
+	rm -f $(NAME)
+	rm -f $(CHECKER)
 
 re: fclean all
 
