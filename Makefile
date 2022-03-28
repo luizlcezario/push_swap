@@ -20,29 +20,29 @@ SRC_BONUS = $(addprefix src_bonus/, $(FILES_BONUS))
 LIB = -L ./libft -lft
 CFLAGS = -Wall -Wextra -Werror 
 
-all:$(NAME)
+all: $(NAME)
 
 bonus: $(CHECKER)
 
 $(NAME): $(LIBFT)
-	@gcc $(CFLAGS) -I ./src/headers $(SRC) -g3 -o $(NAME) $(LIB)
+	gcc $(CFLAGS) -I ./src/headers $(SRC) -g3 -o $(NAME) $(LIB)
 
 $(CHECKER): $(LIBFT)
 	gcc $(CFLAGS) -I ./src_bonus/headers $(SRC_BONUS) -o $(CHECKER) $(LIB) -g3
 
 $(LIBFT):
-	@make others -C ./libft
+	make others -C ./libft
 
 clean:
-	make -C libft clean
+	make -C libft fclean
 
 fclean: clean
 	make -C libft fclean
-	rm $(NAME)
+	rm $(NAME) $(CHECKER)
 
-re: fclean all bonus
+re: fclean all
 
-reb: re bonus
+reb: fclean re bonus
 
 view: re
 	python3 -m push_swap_gui

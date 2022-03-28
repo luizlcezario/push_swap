@@ -6,15 +6,15 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:26:46 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 17:24:04 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:54:17 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	error(void)
+int error(void)
 {
-	char	*str;
+	char *str;
 
 	str = get_next_line(STDIN_FILENO);
 	if (ft_strncmp(str, "Error", 5) == 0)
@@ -34,10 +34,16 @@ int	error(void)
 	return (1);
 }
 
-void	free_all(t_push *stack)
+void free_all(t_push *stack)
 {
-	t_stack	*tmp;
+	t_stack *tmp;
 
+	while (--stack->count_element_b >= 0)
+	{
+		tmp = stack->b->next;
+		free(stack->b);
+		stack->b = tmp;
+	}
 	while (--stack->count_element_a >= 0)
 	{
 		tmp = stack->a->next;

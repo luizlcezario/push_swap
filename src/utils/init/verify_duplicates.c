@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:13:07 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 01:27:49 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/28 17:22:46 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	verify_duplicates(t_push *stack, int argc)
 	quick_sort(stack->original, 0, argc - 2);
 	while (++i < argc - 1)
 	{
-		if (binary_search(stack->original, i + 1, argc - 1,
+		if (binary_search(stack->original, i + 1, argc - 2,
 				stack->original[i]) != -1)
 		{
 			stack->err = 1;

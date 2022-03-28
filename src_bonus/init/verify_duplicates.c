@@ -6,15 +6,15 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:13:07 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/16 15:48:49 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/28 17:25:27 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	binary_search(int *arr, int l, int r, int x)
+int binary_search(int *arr, int l, int r, int x)
 {
-	int	mid;
+	int mid;
 
 	if (r >= l)
 	{
@@ -28,16 +28,16 @@ int	binary_search(int *arr, int l, int r, int x)
 	return (-1);
 }
 
-int	verify_duplicates(t_push *stack, int argc)
+int verify_duplicates(t_push *stack, int argc)
 {
-	int		i;
+	int i;
 
 	i = -1;
 	quick_sort(stack->original, 0, argc - 2);
 	while (++i < argc - 1)
 	{
-		if (binary_search(stack->original, i + 1, argc - 1,
-				stack->original[i]) != -1)
+		if (binary_search(stack->original, i + 1, argc - 2,
+						  stack->original[i]) != -1)
 		{
 			stack->err = 1;
 			return (1);
