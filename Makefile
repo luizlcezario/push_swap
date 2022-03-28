@@ -42,7 +42,7 @@ fclean: clean
 
 re: fclean all
 
-reb: fclean re bonus
+reb: fclean bonus
 
 view: re
 	python3 -m push_swap_gui
