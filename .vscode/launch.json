@@ -45,7 +45,7 @@
 			"request": "launch",
 			"program": "${workspaceRoot}/checker",
 			"args": [
-				"5","4","3", "2"
+				"aa",
 			],
 			"cwd": "${workspaceRoot}",
 			"setupCommands": [

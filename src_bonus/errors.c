@@ -6,7 +6,7 @@
 /*   By: llima-ce <luizlcezario@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:26:46 by llima-ce          #+#    #+#             */
-/*   Updated: 2022/03/25 16:54:17 by llima-ce         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:27:30 by llima-ce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int error(void)
 	char *str;
 
 	str = get_next_line(STDIN_FILENO);
-	if (ft_strncmp(str, "Error", 5) == 0)
+	if (str != NULL && ft_strncmp(str, "Error", 5) == 0)
 	{
 		free(str);
 		if (get_next_line(STDIN_FILENO) != NULL)
